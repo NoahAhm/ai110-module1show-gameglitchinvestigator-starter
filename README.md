@@ -25,13 +25,20 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose.  
+  The app is a Streamlit number-guessing game where the player tries to find a secret number within a limited number of attempts based on difficulty.
+- [x] Detail which bugs you found.  
+  The original version had reversed hint directions, inconsistent range/attempt display, incomplete New Game state reset, and unstable comparisons caused by mixed secret types.
+- [x] Explain what fixes you applied.  
+  Core logic was refactored into `logic_utils.py`, hint logic was corrected, attempts/range/state handling was repaired in `app.py`, and regression tests were added in `tests/test_game_logic.py`.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [x] Fixed game demo complete.
+- Verified manually in Streamlit that the game can be won, hints now guide correctly, and New Game starts a clean session in the selected difficulty range.
+- Verified with `pytest` that all tests pass (`6 passed`), including a regression test for the reversed-hint bug.
+
+![alt text](image.png)
 
 ## 🚀 Stretch Features
 

@@ -22,15 +22,10 @@ I treated a bug as fixed only after both code-path inspection and repeatable tes
 
 ## 4. What did you learn about Streamlit and state?
 
-- In your own words, explain why the secret number kept changing in the original app.
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-- What change did you make that finally gave the game a stable secret number?
+The secret changed because Streamlit reruns the script on each interaction, so values not protected in `st.session_state` can reset or drift. I would explain reruns as “the whole script re-executes every click,” and session state as “the small memory that survives those reruns.” The key fix was centralizing initialization/reset logic and only changing the secret when starting a new game or changing difficulty.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+One habit I will reuse is writing a regression test immediately after finding a user-visible bug. Next time, I will ask AI for smaller, testable changes instead of broad rewrites so mistakes are easier to catch. I rejected one bad AI pattern (string-based number comparison fallback) because it could return wrong results, and this project reinforced that AI code is a draft I must verify, not trust by default.
